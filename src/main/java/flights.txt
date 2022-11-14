@@ -7,3 +7,9 @@
 7,IndiGo,Mumbai,Vizag,2020-06-29,Business,1,45,24,7000
 8,Air Line,London,Trivandrum,2020-06-29,Economy,2,500,25,20000
 9,Air Asia,Bangalore,Chennai,2020-07-02,Economy,1,45,10,2000
+10,Air Line,London,Trivandrum,2020-06-29,Economy,2,500,25,2000
+11,Air Asia,Bangalore,Chennai,2020-07-02,Economy,1,45,10,4000
+12,Air Asia,Bangalore,Chennai,2020-07-02,Economy,1,45,25,2000
+13,Air India,Bangalore,Chennai,2020-07-02,Economy,1,45,10,4000
+14,Spice Jet,Bangalore,Chennai,2020-07-02,Economy,1,45,10,2000
+15,Air India,Banglore,Delhi,2020-06-29,Economy,3,120,12,4000

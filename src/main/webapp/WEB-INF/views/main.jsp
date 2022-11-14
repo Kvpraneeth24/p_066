@@ -78,7 +78,7 @@
          method="POST">
        
          <div class="form-group">
-       <label for="userName">UserName</label> 
+       <label for="userName">Username</label>
                        <input class="form-control"
          type="text" path="userName" id="userName" name="userName" placeholder="email@example.com" >
      </div>

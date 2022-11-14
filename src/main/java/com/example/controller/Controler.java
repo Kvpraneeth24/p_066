@@ -26,7 +26,7 @@ public class Controler {
 	@GetMapping("/")
 	public String First(@ModelAttribute("login") LoginBean loginBean) throws SQLException, IOException {
 		ServiceControl s = new ServiceControl();
-		//s.addItem();
+		s.addItem();
 		return "main";
 	}
 

@@ -46,39 +46,40 @@ public class ServiceControl {
 	}
 
 	public void addItem() throws SQLException, IOException {
-		Connection con;
-		ConnectionHandler c = new ConnectionHandler();
+
 		List<Flight> bill = generateFlights("D:\\Code_Base\\Java\\p_086\\p_086\\src\\main\\java\\flights.txt");
+		List<Flight> l = getMenuItemList();
 
-		con = ConnectionHandler.getConnection();
-		for (Flight fl : bill) {
+		if (bill.size() > l.size() && l.size() != 0) {
+			System.out.println("fileSize :: "+ bill.size());
+			int ia = bill.size() - 1;
+			int ib = l.size() - 1;
+			int k = 0;
 
-			String name = fl.getF_name();
-			String type = fl.getF_type();
-			float price = fl.getF_price();
-			String from = fl.getF_from();
-			String to = fl.getF_to();
-			String date = fl.getF_date();
-			Float dur = fl.getF_dur();
-			int stops = fl.getF_stops();
-			float offers = fl.getF_offers();
-			int id = fl.getF_id();
-
-			PreparedStatement stmt = con.prepareStatement(
-					"insert into flight (f_id,f_name,f_from,f_to,f_date,f_type,f_stops,f_dur_in_min,f_offers,f_price) values(?,?,?,?,?,?,?,?,?,?)");
-			stmt.setInt(1, id);
-			stmt.setString(2, name);
-			stmt.setString(3, from);
-			stmt.setString(4, to);
-			stmt.setString(5, date);
-			stmt.setString(6, type);
-			stmt.setFloat(8, dur);
-			stmt.setInt(7, stops);
-			stmt.setFloat(9, offers);
-			stmt.setFloat(10, price);
-			stmt.execute();
-
-		}
+			for(int j=ib ; j <= ia-1; j++){
+				k = j + 1;
+				Flight update = bill.get(k);
+				List<Flight> updatedList = new ArrayList<>();
+				updatedList.add(update);
+				insertFlightDetails(updatedList);
+				k=0;
+				if(j == ia-1 ){
+					break;
+				}
+			}
+		} else if (bill.size() == l.size()){
+			for(int i=0; i < bill.size(); i++) {
+				int a = bill.get(i).getF_id();
+				int b = l.get(i).getF_id();
+				if (a != b) {
+					insertFlightDetails(bill);
+				} else {
+					continue;
+				}
+			}
+		} else if(l.size() == 0){
+			insertFlightDetails(bill);
+		};
 	}
 
 //	public void getFlightDetails()
@@ -134,4 +135,39 @@ public class ServiceControl {
 
 		return l;
 	}
+
+	public void insertFlightDetails(List<Flight> bill) throws SQLException {
+		System.out.println("DbSize :: "+ bill.size());
+		Connection con;
+		ConnectionHandler c = new ConnectionHandler();
+
+		for (Flight fl : bill) {
+			String name = fl.getF_name();
+			String type = fl.getF_type();
+			float price = fl.getF_price();
+			String from = fl.getF_from();
+			String to = fl.getF_to();
+			String date = fl.getF_date();
+			Float dur = fl.getF_dur();
+			int stops = fl.getF_stops();
+			float offers = fl.getF_offers();
+			int id = fl.getF_id();
+
+			con = c.getConnection();
+			PreparedStatement stmt = con.prepareStatement(
+					"insert into flight (f_id,f_name,f_from,f_to,f_date,f_type,f_stops,f_dur_in_min,f_offers,f_price) values(?,?,?,?,?,?,?,?,?,?)");
+			stmt.setInt(1, id);
+			stmt.setString(2, name);
+			stmt.setString(3, from);
+			stmt.setString(4, to);
+			stmt.setString(5, date);
+			stmt.setString(6, type);
+			stmt.setFloat(8, dur);
+			stmt.setInt(7, stops);
+			stmt.setFloat(9, offers);
+			stmt.setFloat(10, price);
+			System.out.println("stmt :: "+ stmt);
+			stmt.execute();
+		}
+	};
 }

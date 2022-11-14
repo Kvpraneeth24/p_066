@@ -80,17 +80,23 @@
 				
 				<div class="form-group">
 				    <label for="from">From</label>
-				<div>
-				    <input type="text" class="form-control" placeholder="From" name="from"
-					required="true" />
-				</div>
+					<select name="from" class="form-control" id="from">
+					       <option value=""></option>
+                           <option value="Bangalore">Bangalore</option>
+                           <option value="Chennai">Chennai</option>
+                           <option value="Hyderabad">Hyderabad</option>
+                           <option value="Mumbai">Mumbai</option>
+                    </select>
 				</div>
 				<div class="form-group">
 				    <label for="to">To</label>
-				<div>
-				    <input type="text" class="form-control" placeholder="To" name="to"
-									required="true" />
-				</div>
+					<select name="to" class="form-control" id="to">
+					       <option value=""></option>
+					       <option value="Mangalore">Mangalore</option>
+					       <option value="Mumbai">Mumbai</option>
+                           <option value="Chennai">Chennai</option>
+                           <option value="Hyderabad">Hyderabad</option>
+                    </select>
 				</div>
 				<div class="form-group">
 				    <label for="date">Date of Journey</label>
